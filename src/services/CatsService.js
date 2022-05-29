@@ -4,7 +4,7 @@ axios.defaults.headers.common['x-api-key'] = '8b06bd36-7b19-474f-9d78-12d40543c3
 
 const requestParameters = {
     size: 'med',
-    order: 'ASC',
+    order: 'DESK',
     limit: 15,
     page: 1, 
     format: 'json'

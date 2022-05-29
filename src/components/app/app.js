@@ -5,6 +5,7 @@ import {Component} from 'react';
 import getCatsFromAPI from "../../services/CatsService";
 import Menu from "../menu/menu";
 import ImageWrapper from "../image-wrapper/image-wrapper";
+import ShowMoreCats from '../show-more-cats/show-more-cats';
 
 class App extends Component
 {
@@ -46,6 +47,16 @@ class App extends Component
         });
     }
 
+    addMoreCats = () =>
+    {
+        getCatsFromAPI().then(res => {
+            this.setState(({cats}) => {
+                const newArr = [...cats, ...res];
+                return {cats: newArr};
+            })
+        })
+    }
+
     render()
     {
         const filteredCats = this.state.activeMenuTab ? this.state.cats.filter(item => item.favorite) : this.state.cats; 
@@ -53,6 +64,7 @@ class App extends Component
             <>
                 <Menu changeTab={(id) => this.changeTab(id)}/>
                 <ImageWrapper cats={filteredCats} onToggleFav={(id) => this.onToggleFav(id)}/>
+                <ShowMoreCats addMoreCats={() => this.addMoreCats()} tab={this.state.activeMenuTab}/>
             </>    
         );    
     }
