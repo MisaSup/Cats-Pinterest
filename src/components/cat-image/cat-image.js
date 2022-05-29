@@ -30,10 +30,10 @@ class CatImage extends Component
 
     clickedHeart = () =>
     {
+        this.props.onToggleFav();
         if (this.state.heartStyle.indexOf("heart_clicked") === -1)
         {
             this.setState({heartStyle: "fa-solid fa-heart heart_icon heart_clicked"});
-            this.props.onToggleFav();
             localStorage.setItem(this.props.id, this.props.url);
         }
         else
