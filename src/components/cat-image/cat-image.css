@@ -1,0 +1,41 @@
+.cat_wrap
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 256px;
+    height: 256px;
+    padding-top: 15px;
+}
+
+.heart_icon
+{
+    display: none;
+}
+
+.cat_wrap:hover{
+    padding-top: 5px;
+    box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.24), 0px 9px 18px rgba(0, 0, 0, 0.18);
+}
+
+.cat_wrap:hover .heart_icon
+{
+    color: #F24E1E;
+    display: inline;
+    position: relative;
+    font-size: 30px;
+    top: -40px;
+    margin-left: 170px;
+}
+
+.cat_wrap:hover .heart_icon.heart_clicked
+{
+    color: #ff5100;
+}
+
+.cat
+{
+    object-fit: cover;
+    width: 225px;
+    height: 225px;
+}
