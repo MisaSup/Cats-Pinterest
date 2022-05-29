@@ -2,7 +2,7 @@ import "./add-more-cats.css"
 
 const ShowMoreCats = ({addMoreCats, tab}) =>
 {
-    const activeTab = tab ? {display: 'none'} : {display: 'block'};п
+    const activeTab = tab ? {display: 'none'} : {display: 'block'};
     return (
         <button onClick={addMoreCats} 
         className="more_cats"
