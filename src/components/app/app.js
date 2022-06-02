@@ -17,15 +17,35 @@ class App extends Component
     
     state = {
         cats: [],
+        likedCats: [],
         activeMenuTab: 0
+    }
+
+    getLiked = () =>
+    {
+        const tempArr = [];
+        for (let i = 0; i < localStorage.length; i++)
+        {
+            let key = localStorage.key(i);
+            tempArr.push(JSON.parse(localStorage.getItem(key)));
+        }
+        return tempArr;
     }
 
     getCats = () =>
     {
         getCatsFromAPI().then(res => {
-            this.setState(
-                {cats: res}
-            )
+            this.setState(() => {
+                if (localStorage.length)
+                {
+                    const catsFromStorage = this.getLiked();
+                    return ({cats: [...catsFromStorage, ...res]})
+                }
+                else
+                {
+                    return ({cats: res})
+                }
+            })
         })
     }
 
@@ -59,11 +79,15 @@ class App extends Component
 
     render()
     {
-        const filteredCats = this.state.activeMenuTab ? this.state.cats.filter(item => item.favorite) : this.state.cats; 
+        const filteredCats = this.state.activeMenuTab ? 
+        this.state.cats.filter(item => item.favorite) : this.state.cats;
+        console.log("FILTER", filteredCats); 
         return (
             <>
                 <Menu changeTab={(id) => this.changeTab(id)}/>
-                <ImageWrapper cats={filteredCats} onToggleFav={(id) => this.onToggleFav(id)}/>
+                <ImageWrapper cats={filteredCats} 
+                            onToggleFav={(id) => this.onToggleFav(id)}
+                            getLiked={() => this.getLiked()}/>
                 <ShowMoreCats addMoreCats={() => this.addMoreCats()} tab={this.state.activeMenuTab}/>
             </>    
         );    

@@ -34,11 +34,25 @@ class Menu extends Component
         return btns;
     }
 
+    catCounterMessage = () =>
+    {
+        if (localStorage.length > 1)
+        {
+            return (`Вы лайкнули ${localStorage.length} котиков!`);
+        }
+        else if (localStorage.length === 1)
+        {
+            return ("Вы лайкнули одного котика c:");
+        }
+        return ("Вы пока не лайкнули ни одного котика :,(");
+    }
+
     render()
     {
         return (
             <nav className="menu">
                 {this.addMenuButtons()}
+                <div className="cat-counter">{this.catCounterMessage()}</div>
             </nav>
         )
     }

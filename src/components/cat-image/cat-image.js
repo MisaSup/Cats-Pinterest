@@ -8,11 +8,13 @@ class CatImage extends Component
     {
         super(props);
         this.state = {
-            heartStyle: "fa-regular fa-heart heart_icon",
+            heartStyle: this.props.favorite ? 
+            "fa-solid fa-heart heart_icon heart_clicked" : 
+            "fa-regular fa-heart heart_icon",
         };
     }
 
-    poineterOverHeart = () =>
+    pointerOverHeart = () =>
     {
         if (this.state.heartStyle.indexOf("heart_clicked") === -1)
         {
@@ -20,7 +22,7 @@ class CatImage extends Component
         }
     }
 
-    poineterLeftHeart = () =>
+    pointerLeftHeart = () =>
     {
         if (this.state.heartStyle.indexOf("heart_clicked") === -1)
         {
@@ -34,12 +36,13 @@ class CatImage extends Component
         if (this.state.heartStyle.indexOf("heart_clicked") === -1)
         {
             this.setState({heartStyle: "fa-solid fa-heart heart_icon heart_clicked"});
-            localStorage.setItem(this.props.id, this.props.url);
+            const catObj = JSON.stringify({id: this.props.id, url: this.props.url, favorite: true});
+            localStorage.setItem(this.props.id, catObj);
         }
         else
         {
             this.setState({heartStyle: "fa-solid fa-heart heart_icon"});
-            localStorage.removeItem(this.props.id, this.props.url);
+            localStorage.removeItem(this.props.id);
         }
     }
 
@@ -51,8 +54,8 @@ class CatImage extends Component
             <div className="cat_wrap">
                     <img className="cat" src={`${url}` } alt="cat" key={id}/>
                     <i className={heartStyle}
-                    onPointerOver={this.poineterOverHeart}
-                    onPointerLeave={this.poineterLeftHeart}
+                    onPointerOver={this.pointerOverHeart}
+                    onPointerLeave={this.pointerLeftHeart}
                     onClick={this.clickedHeart}></i>
                 </div>
         )

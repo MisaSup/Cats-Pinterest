@@ -9,11 +9,14 @@ class ImageWrapper extends Component
 {
     addImages = () =>
     {
-        const cats = this.props.cats,
-        onToggleFav = this.props.onToggleFav;
+        const {cats, onToggleFav, getLiked} = this.props;
         const images = cats.map(item => {
             return (
-                <CatImage url={item.url} id={item.id} key={item.id} onToggleFav={() => onToggleFav(item.id)}/>
+                <CatImage url={item.url} 
+                id={item.id} key={item.id}
+                favorite={item.favorite} 
+                onToggleFav={() => onToggleFav(item.id)}
+                getLiked={() => getLiked()}/>
             )
         });
         return  images;

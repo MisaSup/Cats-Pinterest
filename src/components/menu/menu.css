@@ -25,3 +25,11 @@
 {
     background: #1E88E5;
 }
+
+.cat-counter
+{
+    display: inline-block;
+    margin-left: 50px;
+    font-size: 14px;
+    color: white;
+}
