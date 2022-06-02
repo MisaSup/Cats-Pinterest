@@ -85,8 +85,7 @@ class App extends Component
             <>
                 <Menu changeTab={(id) => this.changeTab(id)}/>
                 <ImageWrapper cats={filteredCats} 
-                            onToggleFav={(id) => this.onToggleFav(id)}
-                            getLiked={() => this.getLiked()}/>
+                            onToggleFav={(id) => this.onToggleFav(id)}/>
                 <ShowMoreCats addMoreCats={() => this.addMoreCats()} tab={this.state.activeMenuTab}/>
             </>    
         );    
