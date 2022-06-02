@@ -81,7 +81,6 @@ class App extends Component
     {
         const filteredCats = this.state.activeMenuTab ? 
         this.state.cats.filter(item => item.favorite) : this.state.cats;
-        console.log("FILTER", filteredCats); 
         return (
             <>
                 <Menu changeTab={(id) => this.changeTab(id)}/>
