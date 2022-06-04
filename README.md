@@ -5,4 +5,4 @@ The Cat API через get запрос с помощью библиотеки A
 сайте, есть возможность добавлять котиков в “любимое” и запрашивать еще
 больше котиков. Любимые котики сохраняются и извлекаются из Local Storage.
 
-<img width="500px" alt="screenshot" src="screenshot.pmg">
+<img width="500px" alt="screenshot" src="screenshot.png">
