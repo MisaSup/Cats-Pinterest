@@ -9,12 +9,11 @@ import ShowMoreCats from '../show-more-cats/show-more-cats';
 
 class App extends Component
 {
-    constructor(props)
+    componentDidMount()
     {
-        super(props);
         this.getCats();
     }
-    
+
     state = {
         cats: [],
         likedCats: [],
@@ -27,7 +26,8 @@ class App extends Component
         for (let i = 0; i < localStorage.length; i++)
         {
             let key = localStorage.key(i);
-            tempArr.push(JSON.parse(localStorage.getItem(key)));
+            if (/-cat$/.test(key))
+                tempArr.push(JSON.parse(localStorage.getItem(key)));
         }
         return tempArr;
     }
