@@ -37,12 +37,12 @@ class CatImage extends Component
         {
             this.setState({heartStyle: "fa-solid fa-heart heart_icon heart_clicked"});
             const catObj = JSON.stringify({id: this.props.id, url: this.props.url, favorite: true});
-            localStorage.setItem(this.props.id, catObj);
+            localStorage.setItem(`${this.props.id}-cat`, catObj);
         }
         else
         {
             this.setState({heartStyle: "fa-solid fa-heart heart_icon"});
-            localStorage.removeItem(this.props.id);
+            localStorage.removeItem(`${this.props.id}-cat`);
         }
     }
 
